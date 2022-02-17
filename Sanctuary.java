@@ -10,22 +10,37 @@ public class Sanctuary {
     int maxAnimals;
     int maxSpecies;
 
-    public Sanctuary(int maxAnimals, int maxSpecies) {}
+    public Sanctuary(int maxAnimals, int maxSpecies) throws IllegalArgumentException {
+        if(maxAnimals < 0 || maxSpecies < 0) {
+            throw new IllegalArgumentException();
+        }
+        this.sanctuary = new HashMap<String, Integer>();
+        this.maxSpecies = maxSpecies;
+        this.maxAnimals = maxAnimals;
+
+    }
 
     public int getNum(String species) {
+        if(this.sanctuary.containsKey(species)) {
+            this.sanctuary.get(species);
+        }   
         return 0;
     }
     
     public int getTotalAnimals() {
-        return 0;
+        int sum = 0;
+        this.sanctuary.forEach((species, number) -> {
+            sum += number;
+        });
+        return sum;
     }
     
     public int getTotalSpecies() {
-        return 0;
+        return this.sanctuary.size();
     }
 
     public int rescue(String species, int num) {
-        return 0;
+        ;
     }
 
     public void release(String species, int num) {
